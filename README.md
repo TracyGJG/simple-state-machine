@@ -2,7 +2,7 @@
 
 A minimal state machine.
 
-## Default export (aka StateMachine)
+## StateMachine (default export)
 
 The default export is a function (`StateMachine`) that is to be called with an object defining the State Model (as defined below). It will return an object containg two methods:
 
@@ -43,5 +43,42 @@ This simple state machine does not support the following features:
 - History and Back support recording of transitions and a mechanism for reversing them.
 - Conditional triggers with context
   - Provised and alternative to a stright transisiton to perform a predicate operation on a given context to determine if the transition is to be performed.
+
+---
+
+### Test State Model
+
+![State Model Diagram](diagram.svg)
+
+### Test data
+
+```js
+{
+  initial: {
+    action: payload => `initial::Payload: "${payload}"`,
+    triggers: {
+      next: 'tic',
+    },
+  },
+  tic: {
+    action: payload => `tic::Payload: "${payload}"`,
+    triggers: {
+      next: 'tac',
+      again: 'tic',
+    },
+  },
+  tac: {
+    action: payload => `tac::Payload: "${payload}"`,
+    triggers: {
+      next: 'toe',
+      back: 'tic',
+    },
+  },
+  toe: {
+    action: payload => `toe::Payload: "${payload}"`,
+    triggers: {},
+  },
+}
+```
 
 ---
