@@ -39,7 +39,7 @@ This simple state machine does not support the following features:
 - ACTION_TYPES (ENTRY, EXIT or BOTH)
   - ENTRY: fires when the STATE is adopted only
   - EXIT: fired when the STATE is being unadopted only
-  - BOTH: fired when the STATE is being adopted or unadopted.
+  - EVERY: fired when the STATE is being adopted or unadopted.
 - History and Back support recording of transitions and a mechanism for reversing them.
 - Conditional triggers with context
   - Provised and alternative to a stright transisiton to perform a predicate operation on a given context to determine if the transition is to be performed.
@@ -48,7 +48,17 @@ This simple state machine does not support the following features:
 
 ### Test State Model
 
-![State Model Diagram](diagram.svg)
+```mermaid
+stateDiagram-v2
+    direction LR
+    [*] --> Initial
+    Initial --> Tic: Next
+    Tic --> Tic: Again
+    Tic --> Tac: Next
+    Tac --> Toe: Next
+    Tac --> Tic: Back
+    Toe --> [*]
+```
 
 ### Test data
 
