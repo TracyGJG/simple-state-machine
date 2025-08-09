@@ -36,10 +36,9 @@ At the top-level of the model is a list of STATES, one for each property at the 
 
 This simple state machine does not support the following features:
 
-- ACTION_TYPES (ENTRY, EXIT or BOTH)
-  - ENTRY: fires when the STATE is adopted only
-  - EXIT: fired when the STATE is being unadopted only
-  - EVERY: fired when the STATE is being adopted or unadopted.
+- ACTION_TYPES (ENTRY or EXIT)
+  - ENTRY: fires when the STATE is adopted only, from whatever event that triggered.
+  - EXIT: fired when the STATE is being unadopted only, from whatever event that triggered.
 - History and Back support recording of transitions and a mechanism for reversing them.
 - Conditional triggers with context
   - Provised and alternative to a stright transisiton to perform a predicate operation on a given context to determine if the transition is to be performed.
